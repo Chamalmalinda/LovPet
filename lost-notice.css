@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f9f9f9 0%, #e8ecef 100%);
+  color: #333;
+}
+
+/* Navigation */
+.navbar {
+  background-color: #fcf2d0;
+  display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  max-height: 100px;
+  object-fit: cover;
+  filter: drop-shadow(0px 0px 12px gray);
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 5px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 5px;
+  font-weight: lighter;
+  font-size: medium;
+  color: #333;
+  font-weight: normal;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav ul li {
+  margin: 0 0px;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #582204;
+  transform: scale(1.05);
+  text-shadow: 2px 2px 5px #ec5c03;
+}
+
+.nav-menu .icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-menu .icon:hover {
+  color: #582204;
+  transform: scale(1.05);
+  text-shadow: 2px 2px 5px #ec5c03;
+}
+
+.notice-container {
+  max-width: 620px;
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  margin: 80px auto;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.notice-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #44d67c, #ff6b6b);
+}
+
+.notice-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.notice-container h2 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.notice-form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 15px;
+}
+
+.notice-form input,
+.notice-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #dfe6e9;
+  background-color: #fff;
+  color: #2c3e50;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notice-form input:focus,
+.notice-form textarea:focus {
+  border-color: #44d67c;
+  box-shadow: 0 0 8px rgba(68, 214, 124, 0.3);
+  outline: none;
+}
+
+.upload-box {
+  border: 2px dashed #dfe6e9;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  background: linear-gradient(145deg, #ffffff, #f0f4f8);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.upload-box.dragover {
+  background: linear-gradient(145deg, #e6fff0, #d9f7e3);
+  border-color: #44d67c;
+}
+
+.upload-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #576574;
+}
+
+.preview-container {
+  margin-top: 15px;
+  display: none;
+}
+
+.preview-container img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 10px;
+  border: 1px solid #dfe6e9;
+  transition: transform 0.3s ease;
+}
+
+.preview-container img:hover {
+  transform: scale(1.05);
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.submit-btn,
+.cancel-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn {
+  background: linear-gradient(145deg, #ff6b6b 0%, #ff8e53 50%, #c71585 100%);
+  color: white;
+  margin-right: 10px;
+  box-shadow: 0px 0px 0px rgb(235, 152, 58);
+}
+
+.submit-btn:hover {
+  background: #ec5c03;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(235, 130, 11, 0.813);
+}
+
+.cancel-btn {
+  background: linear-gradient(145deg, #dfe6e9, #ccd4db);
+  color: #2c3e50;
+}
+
+.cancel-btn:hover {
+  background: #b0b8c1;
+  color: #2c3e50;
+  transform: scale(1.05);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}

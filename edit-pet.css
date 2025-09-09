@@ -1,0 +1,114 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff9f1;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.form-container {
+  background-color: #cccccc15;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px 30px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px rgb(240, 22, 22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent; 
+}
+
+.form-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 30px rgba(84, 3, 3, 0.8);
+  border: 2px solid rgba(255, 77, 0, 0.7); 
+}
+
+
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #e96a08;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button[type="submit"],
+button[type="button"] {
+  padding: 12px 20px;
+  margin-top: 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgb(235, 152, 58);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;;
+}
+
+button[type="submit"] {
+  background: linear-gradient(145deg, #ff6b6b 0%, #ff8e53 50%, #c71585 100%);;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background: #ec5c03;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(235, 130, 11, 0.813);
+}
+
+button[type="button"] {
+  background-color: #dc3545;
+  color: white;
+}
+
+button[type="button"]:hover {
+  background: #dc3545;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(235, 67, 11, 0.813);
+}
+
+img {
+  display: block;
+  margin-top: 10px;
+  max-height: 150px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}

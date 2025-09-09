@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: inline-block;
+}
+
+.home-btn img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.home-btn img:hover {
+  transform: scale(1.1);
+}
+
+.login-container {
+  background-color: #cccccc15;
+  padding: 40px 15px; 
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0px 0px 20px rgb(240, 22, 22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent; 
+}
+
+.login-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 30px rgba(84, 3, 3, 0.8); 
+  border: 2px solid rgba(255, 77, 0, 0.7); 
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #000000;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.login-form select,
+.login-form input {
+  width: 380px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 88%;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.toggle-password:hover {
+  opacity: 1;
+}
+
+.login-btn {
+  width: 50%;
+  padding: 12px;
+  background-color: #44d67c;
+  background: linear-gradient(145deg, #ff6b6b 0%, #ff8e53 50%, #c71585 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgb(235, 152, 58);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  display: block;     
+  margin: 0 auto;      
+}
+
+
+.login-btn:hover {
+  background: #ec5c03;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(235, 130, 11, 0.813);
+}
+
+.register-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.register-text a {
+  color: #004080;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
+}
+
+
