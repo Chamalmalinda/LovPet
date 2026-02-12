@@ -1,113 +1,358 @@
+/* ===== ADD FEEDBACK PAGE – LOVPET BRAND STYLES ===== */
+/* Inspired by homepage design, only essential components */
+
+:root {
+    --primary: #ff6b35;
+    --primary-dark: #e85a2a;
+    --primary-light: #ff8556;
+    --secondary: #4a90e2;
+    --success: #44d67c;
+    --danger: #ff6b6b;
+    --text-dark: #1a1a1a;
+    --text-light: #666;
+    --text-lighter: #999;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 24px rgba(255,107,53,0.15);
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #f9f9f9 0%, #e8ecef 100%);
-  margin: 0;
-  color: #333;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #fff5f0 0%, #ffe8dc 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
 }
 
-.home-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+.feedback-page {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.home-btn img {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ----- Header with Back Button & Brand ----- */
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
-.home-btn img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--white);
+    border-radius: 100px;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid rgba(255,107,53,0.1);
 }
 
-.feedback-form-container {
-  max-width: 600px;
-  margin: 100px auto;
-  padding: 30px;
-  background: linear-gradient(145deg, #ffffff, #f8fafc);
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.back-button:hover {
+    transform: translateX(-4px);
+    box-shadow: var(--shadow-md);
+    color: var(--primary);
+    border-color: var(--primary-light);
 }
 
-.feedback-form-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, #44d67c, #ff6b6b);
-  transition: opacity 0.3s ease;
+.back-button i {
+    width: 18px;
+    height: 18px;
 }
 
-.feedback-form-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+.brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.feedback-form-container h2 {
-  text-align: center;
-  color: #004080;
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-weight: 600;
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255,107,53,0.3);
 }
 
-.feedback-form label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #2c3e50;
-  font-size: 15px;
+.brand-icon i {
+    width: 22px;
+    height: 22px;
 }
 
-.feedback-form input,
-.feedback-form textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #dfe6e9;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  font-size: 15px;
-  background-color: #fff;
-  color: #2c3e50;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+.brand-name {
+    font-size: 22px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.feedback-form input:focus,
-.feedback-form textarea:focus {
-  border-color: #44d67c;
-  box-shadow: 0 0 8px rgba(68, 214, 124, 0.3);
-  outline: none;
+/* ----- Main Feedback Card ----- */
+.feedback-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 40px 32px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,107,53,0.1);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
 }
 
-.feedback-form button {
-  width: 100%;
-  background: linear-gradient(145deg, #ff6b6b 0%, #ff8e53 50%, #c71585 100%);
-  color: white;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.feedback-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(255,107,53,0.2);
 }
 
-.feedback-form button:hover {
-  background: #ec5c03;
-  transform: scale(1.05);
-  box-shadow: 0px 10px 20px rgba(235, 130, 11, 0.813);
+.card-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark), var(--primary-light));
 }
 
-.error {
-  color: #ff6b6b;
-  text-align: center;
-  margin-bottom: 15px;
-  font-size: 14px;
+.card-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.header-icon {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,107,53,0.2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--primary);
+}
+
+.header-icon i {
+    width: 36px;
+    height: 36px;
+    stroke-width: 1.5;
+}
+
+.card-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.card-header p {
+    font-size: 16px;
+    color: var(--text-light);
+}
+
+/* ----- Alert Messages ----- */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 28px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.alert-error {
+    background: rgba(255,107,107,0.1);
+    color: #d63031;
+    border: 1px solid rgba(255,107,107,0.3);
+}
+
+.alert i {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* ----- Form Styles ----- */
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-dark);
+}
+
+.form-group label i {
+    width: 18px;
+    height: 18px;
+    color: var(--primary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #eaeef2;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+    background: var(--white);
+    color: var(--text-dark);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(255,107,53,0.1);
+    outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-lighter);
+    font-weight: 400;
+}
+
+/* ----- Submit Button ----- */
+.submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 16px 28px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 16px rgba(255,107,53,0.4);
+    margin-top: 8px;
+}
+
+.submit-btn i {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(255,107,53,0.5);
+}
+
+.submit-btn:hover i {
+    transform: translateX(4px);
+}
+
+/* ----- Card Footer ----- */
+.card-footer {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 2px dashed #eaeef2;
+    text-align: center;
+}
+
+.card-footer p {
+    font-size: 14px;
+    color: var(--text-lighter);
+    font-style: italic;
+}
+
+/* ----- Page Footer ----- */
+.feedback-footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+    body {
+        padding: 16px;
+    }
+    
+    .feedback-card {
+        padding: 32px 24px;
+    }
+    
+    .card-header h2 {
+        font-size: 28px;
+    }
+    
+    .feedback-header {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    
+    .brand-mark {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .feedback-card {
+        padding: 28px 20px;
+    }
+    
+    .header-icon {
+        width: 64px;
+        height: 64px;
+    }
+    
+    .header-icon i {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .card-header h2 {
+        font-size: 24px;
+    }
 }

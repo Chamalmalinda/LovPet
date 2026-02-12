@@ -1,4 +1,4 @@
-/* ===== ADMIN ADD PRODUCT – MINIMALIST LOVPET DESIGN ===== */
+/* ===== ADMIN EDIT PRODUCT – MINIMALIST LOVPET DESIGN ===== */
 :root {
     --primary: #ff6b35;
     --primary-dark: #e85a2a;
@@ -325,13 +325,18 @@ body {
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
-    display: none;
 }
 
 .preview-container img {
     width: 100%;
     max-height: 280px;
     object-fit: cover;
+}
+
+.help-text {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: -4px;
 }
 
 /* Form Actions */

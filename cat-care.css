@@ -1,317 +1,353 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: url('img/Catyyyyyy.jpg') no-repeat center center/cover;
-  background-attachment: fixed;
+/* ===== CAT CARE SPECIFIC STYLES ===== */
+/* Works together with main style.css */
+
+/* ----- Hero Section (Cat Care Custom) ----- */
+.cat-care-hero {
+    background: linear-gradient(135deg, #fff5f0 0%, #ffe8dc 50%, #ffd4bd 100%);
 }
 
-.navbar {
-  background-color: #fcf2d069;
-  display: flex;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+.cat-care-hero .hero-visual {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
-.logo img {
-  max-height: 110px;
-  object-fit: cover;
-  filter: drop-shadow(0px 0px 12px gray);
+.cat-care-hero .hero-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 5px;
-  margin: 5px;
-  padding: 10px;
+.cat-care-hero .hero-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
 }
 
-.nav-menu li a {
-  text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 5px;
-  font-weight: lighter;
-  font-size: medium;
-  color: #333;
-  font-weight: normal;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.cat-care-hero .pet-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
-nav ul li {
-  margin: 0 0px;
+.cat-care-hero .pet-icon-cat {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-  color: #582204;
-  transform: scale(1.05);
-  text-shadow: 2px 2px 5px #ec5c03;
+.cat-care-hero .pet-icon-cat2 {
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
 }
 
-.nav-menu .icon {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.cat-care-hero .pet-icon-cat3 {
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
 }
 
-.nav-menu .icon:hover {
-  color: #582204;
-  transform: scale(1.05);
-  text-shadow: 2px 2px 5px #ec5c03;
+/* ----- Breeds Section (Cat specific overrides) ----- */
+.breeds-section {
+    padding: 80px 0;
+    background: var(--bg-primary);
 }
 
-.header-section {
-  
-  color: white;
-  padding: 50px 20px;
-  text-align: center;
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.breeds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
-.header-section h1 {
-  margin: 0;
-  font-size: 40px;
-  font-weight: bold;
-  
+.breed-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border: 2px solid transparent;
 }
 
-h1, h2 {
-  font-size: 38px;
-  color: #ec5c03;
-  margin-bottom: 30px;
-  -webkit-text-stroke: 0.5px #f1ebeb;
+.breed-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
 }
 
-.home-btn {
-  margin-right: auto;
+.breed-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
 }
 
-.home-btn a {
-  display: inline-flex;
-  align-items: center;
+.breed-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
 }
 
-.home-btn img {
-  width: 30px;
-  height: 30px;
-  filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.3));
-  cursor: pointer;
-  transition: transform 0.3s ease;
+.breed-card:hover .breed-image img {
+    transform: scale(1.1);
 }
 
-.hero {
-  display: flex;
-  justify-content: space-between;
-  padding: 50px 30px;
-  background-color: #fcf2d0e2;
+.breed-overlay {
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }
 
-.hero-left {
-  max-width: 50%;
+.breed-tag {
+    background: white;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.hero-left h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
+.breed-content {
+    padding: 24px;
 }
 
-.hero p {
-  font-size: 25px;
-  margin-bottom: 20px;
-  margin-top: -28px;
-  font-family: Cambria;
-  font-weight: bold;
-  color: #000000;
--webkit-text-stroke: 0.1px #000000; 
-
-
+.breed-content h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-dark);
 }
 
-section {
-  padding: 50px 30px;
-  background-color: #ffffff00;
-  text-align: center;
+.breed-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--text-light);
 }
 
-.breed-cards,
-.food-grid,
-.medicine-cards,
-.accessories-grid {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
+.breed-stats span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--bg-secondary);
+    padding: 4px 12px;
+    border-radius: 100px;
 }
 
-.breed-card,
-.food-card,
-.medicine-card,
-.accessory-card {
-  background-color: #fcf2d0cd;
-  padding: 20px;
-  border-radius: 10px;
-  width: 370px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.breed-stats i {
+    width: 14px;
+    height: 14px;
 }
 
-.breed-card img,
-.food-card img,
-.medicine-card img,
-.accessory-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 15px;
+.breed-content p {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.7;
 }
 
-.breed-card h3,
-.food-card h3,
-.medicine-card h3,
-.accessory-card h3 {
-  color: #ec5c03;
-  font-size: 26px;
-  margin-bottom: 10px;
-  font-weight: bolder;
-}
-.breed-card,
-.food-card p,
-.medicine-card p,
-.accessory-card p {
-  
-  color: #050505;
-  font-size: 18px;
-  margin-bottom: 10px;
-  font-weight: normal;
+.breed-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
-.featured-products {
-  padding: 50px 30px;
-  background-color: #f9f9f9;
-  text-align: center;
+.breed-link:hover {
+    color: var(--primary-dark);
+    gap: 8px;
 }
 
-.products-grid {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
+/* ----- Tips Section (same as dog-care) ----- */
+.tips-section {
+    padding: 80px 0;
+    background: var(--bg-secondary);
 }
 
-.product-card {
-  background-color: #fff;
-  padding: 20px;
-  width: 250px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
 }
 
-.product-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
+@media (max-width: 1024px) {
+    .tips-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.product-card h3 {
-  color: #004080;
-  margin-top: 10px;
+@media (max-width: 768px) {
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* Footer */
-footer {
-  background-color: #222;
-  color: #eee;
-  padding: 40px 30px 20px;
+.tip-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: 32px 24px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border: 2px solid transparent;
+    text-align: left;
 }
 
-.footer-logo {
-  width: 90px;
-  margin-bottom: 20px;
-  filter: drop-shadow(0px 0px 12px rgb(240, 236, 236));
+.tip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
 }
 
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px;
-  border-top: 1px solid #444;
-  padding-top: 20px;
+.tip-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, rgba(74,144,226,0.1), rgba(74,144,226,0.2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #4a90e2;
 }
 
-.footer-column {
-  flex: 1;
-  min-width: 180px;
+.tip-icon-wrapper i {
+    width: 32px;
+    height: 32px;
+    stroke-width: 1.5;
 }
 
-.footer-column ul {
-  list-style: none;
-  padding: 0;
+.tip-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
 }
 
-.footer-column ul li {
-  margin-bottom: 8px;
+.tip-list {
+    list-style: none;
+    padding: 0;
 }
 
-.footer-column ul li a {
-  color: #ccc;
-  text-decoration: none;
-  transition: color 0.3s;
+.tip-list li {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
 }
 
-.footer-column ul li a:hover {
-  color: #e66616cb;
+.tip-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #4a90e2;
+    font-weight: 700;
 }
 
-.footer-middle {
-  border-left: 1px solid #555;
-  border-right: 1px solid #555;
-  padding: 0 20px;
+/* ----- Essentials Section (same as dog-care) ----- */
+.essentials-section {
+    padding: 80px 0;
+    background: var(--bg-primary);
 }
 
-.contact-line {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+.essentials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
 }
 
-.icon-img {
-  width: 20px;
-  margin-right: 10px;
+@media (max-width: 1024px) {
+    .essentials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.socials {
-  margin-top: 10px;
+@media (max-width: 768px) {
+    .essentials-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.social-icon {
-  width: 26px;
-  margin-right: 12px;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
+.essential-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 2px solid transparent;
 }
 
-.social-icon:hover {
-  filter: grayscale(0%);
+.essential-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: #4a90e2;
 }
 
-footer .copyright {
-  background-color: #111;
-  text-align: center;
-  font-size: 13px;
-  padding: 10px 0;
-  margin-top: 30px;
+.essential-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(74,144,226,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #4a90e2;
+}
+
+.essential-icon i {
+    width: 32px;
+    height: 32px;
+    stroke-width: 1.5;
+}
+
+.essential-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.essential-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.essential-link {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.essential-link:hover {
+    color: #2c6fb0;
+    transform: translateX(4px);
+}
+
+/* ----- Responsive for Cat Care Hero ----- */
+@media (max-width: 768px) {
+    .cat-care-hero .hero-visual {
+        grid-template-columns: 1fr;
+    }
+    
+    .breeds-grid {
+        grid-template-columns: 1fr;
+    }
 }

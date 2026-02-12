@@ -1,10 +1,8 @@
 <?php
-
 $conn = new mysqli("localhost", "root", "", "lovpet_db");
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
 
 $sql = "SELECT name, message, created_at FROM feedbacks ORDER BY created_at DESC";
 $result = $conn->query($sql);
@@ -14,102 +12,71 @@ $result = $conn->query($sql);
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Feedback - LovPet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="feedback.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-   <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">
-      <img src="img/logo.png" alt="LovPet Logo" />
-    </div>
-    <ul class="nav-menu">
-      <a href="index.php"class="active"><img src="img/home.png" alt="Home" class="icon" /></a>
-      <li><a href="about.php">About Us</a></li>
-      <li><a href="find-pet.php">Buy a Pet</a></li>
-      <li><a href="product.php">Products</a></li>
-      <li><a href="display-notice.php">Lost Pet Notices</a></li>
-      <li><a href="cart.php">Cart</a></li>
-      <li><a href="login.php">Signup</a></li>
-    </ul>
-  </nav>
 
+  <!-- Fixed Home Icon -->
+  <a href="index.php" class="back-home" aria-label="Back to Home">
+    <i data-lucide="home"></i>
+  </a>
 
-
-<div class="feedback-container">
-  <div class="header">
-    <h2>User Feedback</h2>
-    <a href="add-feedback.php" class="add-btn">+ Add Feedback</a>
-  </div>
-
-  <?php if ($result && $result->num_rows > 0): ?>
-    <div class="feedback-list">
-      <?php while ($row = $result->fetch_assoc()): ?>
-        <div class="feedback-card">
-          <h4><?= htmlspecialchars($row['name']) ?></h4>
-          <p><?= nl2br(htmlspecialchars($row['message'])) ?></p>
-          <small><?= date("F j, Y g:i A", strtotime($row['created_at'])) ?></small>
-        </div>
-      <?php endwhile; ?>
-    </div>
-  <?php else: ?>
-    <p class="empty">No feedback found.</p>
-  <?php endif; ?>
-
-</div>
-
-<!-- Footer -->
-  <footer>
-    <img src="img/logo.png" alt="Logo" class="footer-logo">
-    <div class="footer-content">
-
-      <div class="footer-left footer-column">
-        <ul>
-          <li><a href="index.php">Home</a></li>
-          <li><a href="about.php">About us</a></li>
-          <li><a href="find-pet.php">Find a Pet</a></li>
-          <li><a href="product.php">Products</a></li>
-          <li><a href="display-notice.php">Lost Pet Notice</a></li>
-          <li><a href="cart.php">Cart</a></li>
-          <li><a href="login.php">Signup</a></li>
-         
-        </ul>
+  <main class="feedback-main">
+    <div class="container">
+      <div class="page-header">
+        <h1>User Feedback</h1>
+        <p class="subtitle">See what our community is saying about LovPet</p>
+        <a href="add-feedback.php" class="add-feedback-btn">
+          <i data-lucide="plus"></i>
+          <span>Add Your Feedback</span>
+        </a>
       </div>
 
-      <div class="footer-middle footer-column">
-        <ul>
-          <li><a href="faq.php">FAQs</a></li>
-          <li><a href="terms.php">Terms of Services</a></li>
-          <li><a href="privacy.php">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-right footer-column">
-        <div class="contact-line">
-          <img src="img/email1.png" alt="Email Icon" class="icon-img" />
-          <span>lovpet123@gmail.com</span>
+      <?php if ($result && $result->num_rows > 0): ?>
+        <div class="feedback-grid">
+          <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="feedback-card">
+              <div class="card-header">
+                <div class="user-avatar">
+                  <i data-lucide="user"></i>
+                </div>
+                <div class="user-info">
+                  <h3><?= htmlspecialchars($row['name']) ?></h3>
+                  <span class="date"><?= date("F j, Y", strtotime($row['created_at'])) ?></span>
+                </div>
+              </div>
+              <div class="card-body">
+                <p><?= nl2br(htmlspecialchars($row['message'])) ?></p>
+              </div>
+              <div class="card-decoration">
+                <i data-lucide="heart"></i>
+              </div>
+            </div>
+          <?php endwhile; ?>
         </div>
-        <div class="contact-line">
-          <img src="img/call1.png" alt="Phone Icon" class="icon-img" />
-          <span>071-4577814</span>
-        </div>
-        <div class="socials">
-          <a href="https://www.instagram.com/yourprofile" target="_blank">
-            <img src="img/insta.jpeg" alt="Instagram" class="social-icon" />
-          </a>
-          <a href="https://www.facebook.com/yourprofile" target="_blank">
-            <img src="img/fb.png" alt="Facebook" class="social-icon" />
+      <?php else: ?>
+        <div class="empty-state">
+          <i data-lucide="message-square"></i>
+          <h2>No feedback yet</h2>
+          <p>Be the first to share your experience with LovPet!</p>
+          <a href="add-feedback.php" class="add-feedback-btn large">
+            <i data-lucide="plus"></i>
+            <span>Add Feedback</span>
           </a>
         </div>
-
-      </div>
-
+      <?php endif; ?>
     </div>
-    <p class="copyright">
-      Copyright 2025 © LovPet Care. All rights reserved | Company registration PQ 113 | Powered by eDesigners
-    </p>
-  </footer>
+  </main>
 
+  <script>
+    lucide.createIcons();
+  </script>
 
 </body>
 </html>

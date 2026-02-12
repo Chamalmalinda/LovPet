@@ -1,189 +1,456 @@
+<?php
+// Start session for navigation (same as homepage)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dog Breeds and Care - LovPet</title>
-  <link rel="stylesheet" href="dog-care.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Care Guide - LovPet 🐾</title>
+    
+    <!-- Main Stylesheet (from homepage) -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Additional Dog Care specific styles -->
+    <link rel="stylesheet" href="dog-care.css">
+    
+    <!-- Google Fonts & Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">
-      <img src="img/logo.png" alt="LovPet Logo" />
-    </div>
-    <ul class="nav-menu">
-      <a href="index.php" class="active"><img src="img/home.png" alt="Home" class="icon" /></a>
-      <li><a href="about.php">About Us</a></li>
-      <li><a href="find-pet.php">Buy a Pet</a></li>
-      <li><a href="product.php">Products</a></li>
-      <li><a href="display-notice.php">Lost Pet Notices</a></li>
-      <li><a href="cart.php">Cart</a></li>
-      <li><a href="login.php">Signup</a></li>
-    </ul>
-  </nav>
 
-  <header class="header-section">
-    <h1>Everything You Need to Know About Dogs</h1>
-  </header>
+    <!-- ===== NAVIGATION (Dynamic, same as homepage) ===== -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.php" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="paw-print"></i>
+                </div>
+                <span class="logo-text">LovPet</span>
+            </a>
 
-  <section class="hero">
-    <div class="hero">
-      
-      <p>"Discover a wide variety of dog breeds, each with their unique characteristics and personalities. Learn about the essential foods that keep them healthy and energetic, the medicines required for their well-being, and the best accessories to ensure their comfort, safety, and happiness. Provide your loyal companion with the complete care they deserve."</p>
-    </div>
-  </section>
+            <ul class="nav-menu">
+                <li><a href="index.php" class="<?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>">Home</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="find-pet.php">Buy a Pet</a></li>
+                <li><a href="product.php">Products</a></li>
+                <li><a href="display-notice.php">Lost Pets</a></li>
+                <li><a href="cart.php">Cart</a></li>
 
-  <!-- Dog Breeds Section -->
-  <section class="dog-breeds">
-    <h2>Popular Dog Breeds</h2>
-    <div class="breed-cards">
-      <div class="breed-card">
-        <img src="img/8.avif" alt="Labrador" class="breed-img" />
-        <h3>Labrador Retriever</h3>
-        <p>Labrador Retrievers are friendly, loyal, and active dogs, great with families and perfect for service work. They need daily exercise and regular grooming.</p>
-      </div>
-      <div class="breed-card">
-        <img src="img/11.jpeg" alt="Golden Retriever" class="breed-img" />
-        <h3>Golden Retriever</h3>
-        <p>Golden Retrievers are loyal, gentle, and smart family dogs, great with kids and other pets. They need regular exercise and grooming, and their calm, loving nature makes them ideal for therapy and support roles.</p>
-      </div>
-      <div class="breed-card">
-        <img src="img/10.webp" alt="Poodle" class="breed-img" />
-        <h3>Poodle</h3>
-        <p>Poodles, available in Standard, Miniature, and Toy sizes, are smart, friendly, and hypoallergenic. They excel in training, need regular grooming, and make great companions for both active families and city living.</p>
-      </div>
-       <div class="breed-card">
-      <img src="img/German.png" alt="German Shepards" class="breed-img" />
-        <h3>German Shepard</h3>
-        <p>German Shepherds are large, loyal, and intelligent dogs known for their protective nature and versatility in police and military work. They need regular exercise, training, and grooming, thriving best with experienced owners.</p>
-      </div>
-       <div class="breed-card">
-      <img src="img/boxer.jpg" alt="Boxer" class="breed-img" />
-        <h3>Boxer</h3>
-        <p>Boxers are energetic, playful, and loyal dogs, great with kids and protective of their families. They need regular exercise and early training.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Dog Foods Section -->
-  <section class="dog-foods">
-    <h2>Dog Foods for a Healthy Diet</h2>
-    <div class="food-grid">
-      <div class="food-card">
-        <img src="img/13.webp" alt="Dry Dog Food" class="food-img" />
-        <h3>Dry Dog Food</h3>
-        <p>Complete and balanced meals that provide essential nutrients for your dog's health. Ideal for maintaining a healthy coat, skin, and teeth.</p>
-        <p><strong>Benefits:</strong> High in fiber, supports dental health, helps in weight management.</p>
-        <p><strong>Recommended For:</strong> Active dogs, large breed dogs, and senior dogs.</p>
-      </div>
-      <div class="food-card">
-        <img src="img/14.webp" alt="Wet Dog Food" class="food-img" />
-        <h3>Wet Dog Food</h3>
-        <p>Rich in flavor and moisture, perfect for picky eaters or dogs with special dietary needs. Often contains higher protein content.</p>
-        <p><strong>Benefits:</strong> Enhances hydration, more palatable, helps in weight control for some dogs.</p>
-        <p><strong>Recommended For:</strong> Dogs with health issues, puppies, or dogs needing extra hydration.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dog Medicine Section -->
-  <section class="dog-medicine">
-    <h2>Essential Dog Medicines</h2>
-    <div class="medicine-cards">
-      <div class="medicine-card">
-        <img src="img/15.webp" alt="Flea Treatment" class="medicine-img" />
-        <h3>Flea & Tick Treatment</h3>
-        <p>Protect your dog from fleas, ticks, and other harmful parasites. These treatments are essential for preventing skin infections and diseases transmitted by parasites.</p>
-        <p><strong>Types Available:</strong> Oral tablets, topical solutions, collars.</p>
-        <p><strong>How It Works:</strong> Medication kills fleas and ticks, preventing them from reproducing.</p>
-      </div>
-      <div class="medicine-card">
-        <img src="img/16.webp" alt="Vaccinations" class="medicine-img" />
-        <h3>Vaccinations</h3>
-        <p>Ensure your dog is protected from common diseases like rabies, parvovirus, and distemper with regular vaccinations.</p>
-        <p><strong>Benefits:</strong> Prevents fatal diseases, boosts immune system, keeps your pet healthy and safe.</p>
-        <p><strong>Recommended For:</strong> All dogs, especially puppies and dogs in high-risk areas.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dog Accessories Section -->
-  <section class="dog-accessories">
-    <h2>Essential Dog Accessories</h2>
-    <div class="accessory-cards">
-      <div class="accessory-card">
-        <img src="img/17.jpg" alt="Dog Collar" class="accessory-img" />
-        <h3>Stylish Dog Collars</h3>
-        <p>Comfortable and adjustable collars that come in various sizes and designs. Ideal for everyday wear and safety identification.</p>
-        <p><strong>Materials Available:</strong> Leather, nylon, and reflective fabric.</p>
-        <p><strong>Recommended For:</strong> All dog breeds, especially puppies for training purposes.</p>
-      </div>
-      <div class="accessory-card">
-        <img src="img/18.jpg" alt="Dog Toy" class="accessory-img" />
-        <h3>Interactive Dog Toys</h3>
-        <p>Durable toys designed to engage your dog in playtime. These toys can also help with mental stimulation and exercise.</p>
-        <p><strong>Types Available:</strong> Chew toys, squeaky toys, fetch balls.</p>
-        <p><strong>Recommended For:</strong> Active dogs, puppies, and dogs in need of extra exercise.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <img src="img/logo.png" alt="Logo" class="footer-logo">
-    <div class="footer-content">
-
-      <div class="footer-left footer-column">
-        <ul>
-          <li><a href="index.php">Home</a></li>
-          <li><a href="about.php">About us</a></li>
-          <li><a href="find-pet.php">Find a Pet</a></li>
-          <li><a href="product.php">Products</a></li>
-          <li><a href="display-notice.php">Lost Pet Notice</a></li>
-          <li><a href="cart.php">Cart</a></li>
-          <li><a href="login.php">Signup</a></li>
-         
-        </ul>
-      </div>
-
-      <div class="footer-middle footer-column">
-        <ul>
-          <li><a href="faq.php">FAQs</a></li>
-          <li><a href="terms.php">Terms of Services</a></li>
-          <li><a href="privacy.php">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-right footer-column">
-        <div class="contact-line">
-          <img src="img/email1.png" alt="Email Icon" class="icon-img" />
-          <span>lovpet123@gmail.com</span>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <!-- Logged in -->
+                    <li>Welcome, <?= htmlspecialchars($_SESSION['fullname']) ?></li>
+                    <li>
+                        <?php if ($_SESSION['user_type'] === 'admin'): ?>
+                            <a href="admin-dashboard.php" class="btn-primary">Admin Dashboard</a>
+                        <?php elseif ($_SESSION['user_type'] === 'seller'): ?>
+                            <a href="seller_dashboard.php" class="btn-primary">My Dashboard</a>
+                        <?php elseif ($_SESSION['user_type'] === 'buyer'): ?>
+                            <a href="buyer_dashboard.php" class="btn-primary">My Dashboard</a>
+                        <?php endif; ?>
+                    </li>
+                    <li><a href="logout.php" class="btn-secondary">Logout</a></li>
+                <?php else: ?>
+                    <!-- Not logged in -->
+                    <li><a href="login.php" class="btn-primary">Login</a></li>
+                    <li><a href="register.php" class="btn-secondary">Sign Up</a></li>
+                <?php endif; ?>
+            </ul>
         </div>
-        <div class="contact-line">
-          <img src="img/call1.png" alt="Phone Icon" class="icon-img" />
-          <span>071-4577814</span>
+    </nav>
+
+    <!-- ===== HERO SECTION (Dog Care specific) ===== -->
+    <section class="hero dog-care-hero">
+        <div class="hero-decoration hero-decoration-1"></div>
+        <div class="hero-decoration hero-decoration-2"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i data-lucide="sparkles"></i>
+                    <span>Complete Dog Care Guide</span>
+                </div>
+                <h1>Everything Your <span style="color: var(--primary-color);">Furry Friend</span> Needs</h1>
+                <p>From popular breeds to essential care tips — feeding, grooming, training, and health. Give your dog the love they deserve.</p>
+                <div class="hero-buttons">
+                    <a href="#breeds" class="btn btn-primary">
+                        <span>Explore Breeds</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#tips" class="btn btn-secondary">
+                        <span>Care Tips</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i data-lucide="dog"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number">450+</div>
+                            <div class="stat-label">Breeds</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Care Tips</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number">5k+</div>
+                            <div class="stat-label">Happy Dogs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card card-1">
+                    <div class="pet-icon pet-icon-dog">
+                        <i data-lucide="dog"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Labrador</h3>
+                        <p>Friendly & Energetic</p>
+                    </div>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="hero-card card-2">
+                    <div class="pet-icon pet-icon-cat">
+                        <i data-lucide="dog"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Golden Retriever</h3>
+                        <p>Gentle & Smart</p>
+                    </div>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="hero-card card-3">
+                    <div class="pet-icon pet-icon-bird">
+                        <i data-lucide="dog"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>German Shepherd</h3>
+                        <p>Loyal & Protective</p>
+                    </div>
+                    <div class="card-shine"></div>
+                </div>
+            </div>
         </div>
-        <div class="socials">
-          <a href="https://www.instagram.com/yourprofile" target="_blank">
-            <img src="img/insta.jpeg" alt="Instagram" class="social-icon" />
-          </a>
-          <a href="https://www.facebook.com/yourprofile" target="_blank">
-            <img src="img/fb.png" alt="Facebook" class="social-icon" />
-          </a>
+    </section>
+
+    <!-- ===== POPULAR DOG BREEDS SECTION ===== -->
+    <section id="breeds" class="breeds-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🐕 Popular Breeds</span>
+                <h2>Find Your Perfect Match</h2>
+                <p>Each breed has unique traits. Learn about their personality, care needs, and more.</p>
+            </div>
+            <div class="breeds-grid">
+                <!-- Labrador Retriever -->
+                <div class="breed-card">
+                    <div class="breed-image">
+                        <img src="img/8.avif" alt="Labrador Retriever">
+                        <div class="breed-overlay">
+                            <span class="breed-tag">Family Dog</span>
+                        </div>
+                    </div>
+                    <div class="breed-content">
+                        <h3>Labrador Retriever</h3>
+                        <div class="breed-stats">
+                            <span><i data-lucide="zap"></i> Energy: High</span>
+                            <span><i data-lucide="scissors"></i> Grooming: Moderate</span>
+                            <span><i data-lucide="brain"></i> Trainability: Excellent</span>
+                        </div>
+                        <p>Friendly, active, and outgoing. Labs are wonderful family companions and excel in service roles. Daily exercise and regular brushing keep them happy.</p>
+                        <a href="#" class="breed-link">Read more →</a>
+                    </div>
+                </div>
+                <!-- Golden Retriever -->
+                <div class="breed-card">
+                    <div class="breed-image">
+                        <img src="img/11.jpeg" alt="Golden Retriever">
+                        <div class="breed-overlay">
+                            <span class="breed-tag">Therapy Dog</span>
+                        </div>
+                    </div>
+                    <div class="breed-content">
+                        <h3>Golden Retriever</h3>
+                        <div class="breed-stats">
+                            <span><i data-lucide="zap"></i> Energy: Moderate</span>
+                            <span><i data-lucide="scissors"></i> Grooming: High</span>
+                            <span><i data-lucide="brain"></i> Trainability: Excellent</span>
+                        </div>
+                        <p>Intelligent, gentle, and devoted. Goldens are ideal for families with children. Their thick coat needs brushing 2-3 times a week.</p>
+                        <a href="#" class="breed-link">Read more →</a>
+                    </div>
+                </div>
+                <!-- Poodle -->
+                <div class="breed-card">
+                    <div class="breed-image">
+                        <img src="img/10.webp" alt="Poodle">
+                        <div class="breed-overlay">
+                            <span class="breed-tag">Hypoallergenic</span>
+                        </div>
+                    </div>
+                    <div class="breed-content">
+                        <h3>Poodle (Standard)</h3>
+                        <div class="breed-stats">
+                            <span><i data-lucide="zap"></i> Energy: Moderate</span>
+                            <span><i data-lucide="scissors"></i> Grooming: High</span>
+                            <span><i data-lucide="brain"></i> Trainability: Excellent</span>
+                        </div>
+                        <p>Exceptionally smart and elegant. Poodles are easy to train and shed very little. Regular professional grooming is a must.</p>
+                        <a href="#" class="breed-link">Read more →</a>
+                    </div>
+                </div>
+                <!-- German Shepherd -->
+                <div class="breed-card">
+                    <div class="breed-image">
+                        <img src="img/German.png" alt="German Shepherd">
+                        <div class="breed-overlay">
+                            <span class="breed-tag">Protector</span>
+                        </div>
+                    </div>
+                    <div class="breed-content">
+                        <h3>German Shepherd</h3>
+                        <div class="breed-stats">
+                            <span><i data-lucide="zap"></i> Energy: High</span>
+                            <span><i data-lucide="scissors"></i> Grooming: Moderate</span>
+                            <span><i data-lucide="brain"></i> Trainability: Excellent</span>
+                        </div>
+                        <p>Confident, courageous, and smart. German Shepherds thrive on having a job. Early socialization and consistent training are key.</p>
+                        <a href="#" class="breed-link">Read more →</a>
+                    </div>
+                </div>
+                <!-- Boxer -->
+                <div class="breed-card">
+                    <div class="breed-image">
+                        <img src="img/boxer.jpg" alt="Boxer">
+                        <div class="breed-overlay">
+                            <span class="breed-tag">Playful</span>
+                        </div>
+                    </div>
+                    <div class="breed-content">
+                        <h3>Boxer</h3>
+                        <div class="breed-stats">
+                            <span><i data-lucide="zap"></i> Energy: High</span>
+                            <span><i data-lucide="scissors"></i> Grooming: Low</span>
+                            <span><i data-lucide="brain"></i> Trainability: Good</span>
+                        </div>
+                        <p>Fun-loving, patient, and protective. Boxers bond deeply with families and need plenty of exercise. Their short coat is easy to maintain.</p>
+                        <a href="#" class="breed-link">Read more →</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-      </div>
+    <!-- ===== ESSENTIAL CARE TIPS SECTION ===== -->
+    <section id="tips" class="tips-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">❤️ Essential Care</span>
+                <h2>How to Keep Your Dog Happy & Healthy</h2>
+                <p>Simple daily habits that make a big difference.</p>
+            </div>
+            <div class="tips-grid">
+                <!-- Feeding -->
+                <div class="tip-card">
+                    <div class="tip-icon-wrapper">
+                        <i data-lucide="utensils"></i>
+                    </div>
+                    <h3>Feeding & Nutrition</h3>
+                    <ul class="tip-list">
+                        <li>High-quality, age-appropriate food</li>
+                        <li>Measure portions to avoid obesity</li>
+                        <li>Fresh water always available</li>
+                        <li>Avoid toxic foods (chocolate, grapes)</li>
+                    </ul>
+                </div>
+                <!-- Grooming -->
+                <div class="tip-card">
+                    <div class="tip-icon-wrapper">
+                        <i data-lucide="scissors"></i>
+                    </div>
+                    <h3>Grooming & Hygiene</h3>
+                    <ul class="tip-list">
+                        <li>Brush coat 2-3 times/week</li>
+                        <li>Trim nails every 3-4 weeks</li>
+                        <li>Clean ears weekly</li>
+                        <li>Bathe only when needed</li>
+                    </ul>
+                </div>
+                <!-- Training -->
+                <div class="tip-card">
+                    <div class="tip-icon-wrapper">
+                        <i data-lucide="gamepad-2"></i>
+                    </div>
+                    <h3>Training & Behavior</h3>
+                    <ul class="tip-list">
+                        <li>Start with basic commands (sit, stay)</li>
+                        <li>Use positive reinforcement</li>
+                        <li>Socialize early with people/dogs</li>
+                        <li>Be consistent and patient</li>
+                    </ul>
+                </div>
+                <!-- Health -->
+                <div class="tip-card">
+                    <div class="tip-icon-wrapper">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <h3>Health & Wellness</h3>
+                    <ul class="tip-list">
+                        <li>Annual vet check-ups</li>
+                        <li>Monthly flea/tick prevention</li>
+                        <li>Daily exercise (30-60 min)</li>
+                        <li>Watch for signs of illness</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-    <p class="copyright">
-      Copyright 2025 © LovPet Care. All rights reserved | Company registration PQ 113 | Powered by eDesigners
-    </p>
-  </footer>
+    <!-- ===== DOG ESSENTIALS SHOP SECTION ===== -->
+    <section class="essentials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🛍️ Shop Essentials</span>
+                <h2>Everything Your Dog Needs</h2>
+                <p>Food, medicine, accessories — we've got it covered.</p>
+            </div>
+            <div class="essentials-grid">
+                <div class="essential-card">
+                    <div class="essential-icon">
+                        <i data-lucide="package"></i>
+                    </div>
+                    <h3>Premium Dog Food</h3>
+                    <p>Dry, wet, grain-free, and breed-specific formulas.</p>
+                    <a href="product.php" class="essential-link">Shop Food →</a>
+                </div>
+                <div class="essential-card">
+                    <div class="essential-icon">
+                        <i data-lucide="pill"></i>
+                    </div>
+                    <h3>Health & Medicine</h3>
+                    <p>Flea/tick treatments, dewormers, vitamins.</p>
+                    <a href="product.php" class="essential-link">Shop Medicine →</a>
+                </div>
+                <div class="essential-card">
+                    <div class="essential-icon">
+                        <i data-lucide="toy"></i>
+                    </div>
+                    <h3>Collars & Leashes</h3>
+                    <p>Durable, stylish, and reflective options.</p>
+                    <a href="product.php" class="essential-link">Shop Accessories →</a>
+                </div>
+                <div class="essential-card">
+                    <div class="essential-icon">
+                        <i data-lucide="dog"></i>
+                    </div>
+                    <h3>Toys & Enrichment</h3>
+                    <p>Chew toys, puzzle games, fetch balls.</p>
+                    <a href="product.php" class="essential-link">Shop Toys →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- ===== CTA SECTION ===== -->
+    <section class="cta-section">
+        <div class="cta-decoration cta-decoration-1"></div>
+        <div class="cta-decoration cta-decoration-2"></div>
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <i data-lucide="heart"></i>
+                </div>
+                <h2>Ready to Welcome a Dog?</h2>
+                <p>Browse our available puppies or schedule a vet consultation.</p>
+                <a href="find-pet.php" class="btn btn-primary btn-large">
+                    <span>Find Your Puppy</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER (Exact copy from homepage) ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i data-lucide="paw-print"></i>
+                        </div>
+                        <span class="logo-text">LovPet</span>
+                    </div>
+                    <p class="footer-description">Connecting loving pets with caring families across Sri Lanka since 2020.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/yourprofile" target="_blank" aria-label="Instagram">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/yourprofile" target="_blank" aria-label="Facebook">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="find-pet.php">Find a Pet</a></li>
+                        <li><a href="product.php">Products</a></li>
+                        <li><a href="display-notice.php">Lost Pet Notice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.php">FAQs</a></li>
+                        <li><a href="terms.php">Terms of Service</a></li>
+                        <li><a href="privacy.php">Privacy Policy</a></li>
+                        <li><a href="cart.php">Cart</a></li>
+                        <li><a href="login.php">Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-list">
+                        <li>
+                            <i data-lucide="mail"></i>
+                            <span>lovpet123@gmail.com</span>
+                        </li>
+                        <li>
+                            <i data-lucide="phone"></i>
+                            <span>071-4577814</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LovPet Care. All rights reserved | Company registration PQ 113 | Powered by eDesigners</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Initialization -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
-
 </html>

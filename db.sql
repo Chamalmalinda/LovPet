@@ -72,6 +72,36 @@ CREATE TABLE products (
   image LONGBLOB NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total_amount` decimal(10,2) NOT NULL,
+  `items_count` int(11) NOT NULL DEFAULT 1,
+  `status` enum('Pending','Completed','Cancelled','Processing') NOT NULL DEFAULT 'Pending',
+  `payment_method` varchar(50) DEFAULT NULL,
+  `delivery_address` text DEFAULT NULL,
+  `contact_number` varchar(20) DEFAULT NULL,
+  `notes` text DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `order_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `item_type` enum('pet','product') NOT NULL DEFAULT 'pet',
+  `item_id` int(11) DEFAULT NULL,
+  `item_name` varchar(255) NOT NULL,
+  `item_breed` varchar(255) DEFAULT NULL,
+  `item_price` decimal(10,2) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `item_image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_id` (`order_id`),
+  CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 ALTER TABLE pets ADD seller_id INT NOT NULL;
 
 

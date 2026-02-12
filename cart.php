@@ -10,7 +10,7 @@ if (!isset($_SESSION['cart'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['name'], $_POST['breed'], $_POST['price'], $_POST['image'])) {
   $item = [
     'name' => $_POST['name'],
-    'breed' => $_POST['breed'],
+    'breed' => $_POST['breed'] ?? '', // For products, breed might be brand
     'price' => (float)$_POST['price'],
     'image' => $_POST['image']
   ];
@@ -23,14 +23,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['name'], $_POST['breed
 // Handle item removal
 if (isset($_GET['remove'])) {
   $index = (int)$_GET['remove'];
-  unset($_SESSION['cart'][$index]);
-  $_SESSION['cart'] = array_values($_SESSION['cart']); // Re-index
+  if (isset($_SESSION['cart'][$index])) {
+    unset($_SESSION['cart'][$index]);
+    $_SESSION['cart'] = array_values($_SESSION['cart']); // Re-index
+  }
+  header("Location: cart.php");
+  exit;
 }
 
 // Calculate total
 $total = 0;
 foreach ($_SESSION['cart'] as $item) {
-  $total += $item['price'];
+  $total += $item['price'] ?? 0;
 }
 ?>
 
@@ -40,123 +44,77 @@ foreach ($_SESSION['cart'] as $item) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Cart - LovPet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="cart.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">
-      <img src="img/logo.png" alt="LovPet Logo" />
-    </div>
-    <ul class="nav-menu">
-      <a href="index.php"class="active"><img src="img/home.png" alt="Home" class="icon" /></a>
-      <li><a href="about.php">About Us</a></li>
-      <li><a href="find-pet.php">Buy a Pet</a></li>
-      <li><a href="product.php">Products</a></li>
-      <li><a href="display-notice.php">Lost Pet Notices</a></li>
-      <li><a href="cart.php" class="active">Cart</a></li>
-      <li><a href="login.php">Signup</a></li>
-    </ul>
-  </nav>
+  <!-- Fixed Home Icon (top-left) -->
+  <a href="index.php" class="back-home" aria-label="Back to Home">
+    <i data-lucide="home"></i>
+  </a>
 
-  <div class="cart-container">
-    <h2>Your Cart</h2>
+  <main class="cart-main">
+    <div class="container">
+      <div class="cart-header">
+        <h1>Your Shopping Cart</h1>
+        <p class="item-count"><?= count($_SESSION['cart'] ?? []) ?> item<?= count($_SESSION['cart'] ?? []) !== 1 ? 's' : '' ?></p>
+      </div>
 
-    <?php if (empty($_SESSION['cart'])): ?>
-      <p class="empty">Your cart is empty.</p>
-    <?php else: ?>
-      <table class="cart-table">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Breed / Brand</th>
-            <th>Price (LKR)</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
+      <?php if (empty($_SESSION['cart'])): ?>
+        <div class="empty-cart">
+          <i data-lucide="shopping-cart"></i>
+          <h2>Your cart is empty</h2>
+          <p>Looks like you haven't added anything yet. Start shopping!</p>
+          <a href="find-pet.php" class="continue-shopping-btn">Continue Shopping</a>
+        </div>
+      <?php else: ?>
+        <div class="cart-items">
           <?php foreach ($_SESSION['cart'] as $index => $item): ?>
-            <tr>
-              <td>
-                <img src="<?= htmlspecialchars($item['image']) ?>" alt="Cart Item" style="width: 80px; height: auto;">
-              </td>
-              <td><?= htmlspecialchars($item['name']) ?></td>
-              <td><?= htmlspecialchars($item['breed']) ?></td>
-              <td><?= number_format($item['price'], 2) ?></td>
-              <td>
-                <a href="cart.php?remove=<?= $index ?>" class="remove-btn">Remove</a>
-              </td>
-            </tr>
+            <div class="cart-item">
+              <div class="item-image">
+                <img src="<?= htmlspecialchars($item['image'] ?? 'img/placeholder.jpg') ?>" alt="<?= htmlspecialchars($item['name'] ?? '') ?>">
+              </div>
+              <div class="item-details">
+                <h3><?= htmlspecialchars($item['name'] ?? '') ?></h3>
+                <!-- breed/brand field - products use brand, pets use breed -->
+                <p class="breed"><?= htmlspecialchars($item['breed'] ?? $item['brand'] ?? '') ?></p>
+                <p class="price">LKR <?= number_format($item['price'] ?? 0, 2) ?></p>
+              </div>
+              <a href="cart.php?remove=<?= $index ?>" class="remove-item">
+                <i data-lucide="trash-2"></i>
+              </a>
+            </div>
           <?php endforeach; ?>
-        </tbody>
-      </table>
-
-      <div class="cart-total">
-        <strong>Total:</strong> LKR <?= number_format($total, 2) ?>
-      </div>
-
-      <form method="POST" action="online-payment.php">
-  <input type="hidden" name="total_amount" value="<?= number_format($total, 2, '.', '') ?>">
-  <button type="submit" class="checkout-btn">Proceed to Checkout</button>
-</form>
-
-    <?php endif; ?>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <img src="img/logo.png" alt="Logo" class="footer-logo">
-    <div class="footer-content">
-
-      <div class="footer-left footer-column">
-        <ul>
-          <li><a href="index.php">Home</a></li>
-          <li><a href="about.php">About us</a></li>
-          <li><a href="find-pet.php">Find a Pet</a></li>
-          <li><a href="product.php">Products</a></li>
-          <li><a href="display-notice.php">Lost Pet Notice</a></li>
-          <li><a href="cart.php">Cart</a></li>
-          <li><a href="login.php">Signup</a></li>
-         
-        </ul>
-      </div>
-
-      <div class="footer-middle footer-column">
-        <ul>
-          <li><a href="faq.php">FAQs</a></li>
-          <li><a href="terms.php">Terms of Services</a></li>
-          <li><a href="privacy.php">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-right footer-column">
-        <div class="contact-line">
-          <img src="img/email1.png" alt="Email Icon" class="icon-img" />
-          <span>lovpet123@gmail.com</span>
         </div>
-        <div class="contact-line">
-          <img src="img/call1.png" alt="Phone Icon" class="icon-img" />
-          <span>071-4577814</span>
-        </div>
-        <div class="socials">
-          <a href="https://www.instagram.com/yourprofile" target="_blank">
-            <img src="img/insta.jpeg" alt="Instagram" class="social-icon" />
+
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>LKR <?= number_format($total, 2) ?></span>
+          </div>
+          <div class="summary-row total">
+            <strong>Total</strong>
+            <strong>LKR <?= number_format($total, 2) ?></strong>
+          </div>
+
+          <a href="checkout.php" class="checkout-btn">
+            <span>Proceed to Checkout</span>
+            <i data-lucide="arrow-right"></i>
           </a>
-          <a href="https://www.facebook.com/yourprofile" target="_blank">
-            <img src="img/fb.png" alt="Facebook" class="social-icon" />
-          </a>
+
+          <a href="find-pet.php" class="continue-shopping">← Continue Shopping</a>
         </div>
-
-      </div>
-
+      <?php endif; ?>
     </div>
-    <p class="copyright">
-      Copyright 2025 © LovPet Care. All rights reserved | Company registration PQ 113 | Powered by eDesigners
-    </p>
-  </footer>
+  </main>
 
+  <script>
+    lucide.createIcons();
+  </script>
 
 </body>
 </html>
